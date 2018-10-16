@@ -4,9 +4,7 @@ canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
 var ctx = canvas.getContext('2d')
-
-var colorarray = ['#f7336e','#ffffff', '#5bd5f7']
-
+var colorarray = ['#581845', '#900C3F', '#C70039', '#FF5733', '#FFC30F']
 function particles(x,y,dx,dy,radius){
     this.x = mouse.x;
     this.y = mouse.y;
@@ -33,9 +31,6 @@ function particles(x,y,dx,dy,radius){
         this.x+=this.dx;
         this.y+=this.dy;  
         this.radius-=Math.random();
-        // if(this.radius <= 0){
-        //     particle_array.splice(i,1);
-        // }
 
         if(this.radius >= 0 ){
             this.draw();
@@ -47,14 +42,6 @@ function particles(x,y,dx,dy,radius){
     }
 }
 var particle_array = [];
-// function init(){
-//     for(let i=0; i<100; i++)
-//     {   
-//         var dx = Math.random()*0.5;
-//         var dy = Math.random()*0.5;
-//         particle_array.push(new particles(mouse.x,mouse.y,dx,dy,40))
-//     }
-// }
 
 window.addEventListener('mousemove', function(event){
     mouse.x = event.clientX;
@@ -73,10 +60,7 @@ var mouse = {
     y: window.innerHeight/2
 };
 
-
-
 function animate(){
-
     requestAnimationFrame(animate)
     ctx.clearRect(0,0,window.innerWidth,window.innerHeight)
         var dx = (Math.random()-0.5) * 3.5;
@@ -88,7 +72,5 @@ function animate(){
         
         particle_array[i].update(i);
     }
-
 }
-//init()
 animate()
